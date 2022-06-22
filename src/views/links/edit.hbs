@@ -1,0 +1,38 @@
+<div class="col-md-4 mx-auto">
+
+    <div class="card">
+        <div class="card-body">
+            <form action="/links/edit/{{link.id}}" method="POST">
+                <div class="form-group">
+                    <input type="text" name="empresa" class="form-control" placeholder="Empresa" value="{{link.empresa}}" autofocus>
+                </div>
+                 <div class="form-group">
+                    <input type="text" name="rubro" class="form-control" placeholder="Rubro" value="{{link.rubro}}" autofocus>
+                </div>
+                 <div class="form-group">
+                    <input type="date" name="fecha" class="form-control" value="{{link.fecha}}" >
+                </div>
+                 <div class="form-group">
+                    <input type="text" name="domicilio" class="form-control" placeholder="Domicilio" value="{{link.domicilio}}" autofocus>
+                </div>
+                 <div class="form-group">
+                    <input type="text" name="RFC" class="form-control" placeholder="RFC" value="{{link.RFC}}" autofocus>
+                </div>
+                <div class="form-group">
+                    <textarea name="descripcion" rows="2" class="form-control" placeholder="Descripcion">{{link.descripcion}}</textarea>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-bd-primary btn-block">
+                        guardar datos actualizados
+                    </button>
+                </div>
+                 <div class="form-group">
+                    <a class="btn btn-bd-primary btn-block" href="/links/">
+                        Regresar
+                    </a>
+                    
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

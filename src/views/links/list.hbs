@@ -1,0 +1,37 @@
+<div class="container p-4">
+    <div class="row">
+        {{#each links}}
+        <div class="col-md-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <p>
+                        <h3 class="card-title text-uppercase">
+                            {{empresa}}
+                        </h3>
+                    </p>
+                    <p class="m-2">{{rubro}}</p>
+                    <p class="text-muted">
+                        {{RFC}}
+                    </p>
+                    <a class="btn btn-danger" href="/links/delete/{{id}}">
+                        Eliminar
+                    </a>
+                    <a class="btn btn-secondary" href="/links/edit/{{id}}">
+                        Editar
+                    </a>
+                    <a class="btn btn-bd-primary" href="/links/details/{{id}}">
+                        Detalles
+                    </a>
+                </div>
+            </div>
+        </div>
+        {{else}}
+        <div class="col-md-4 mx-auto">
+            <div class="card card-body text-center">
+                <p>No hay ningun dato guardado por el momento.</p>
+                <a href="/links/add">Agregar un proveedor</a>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>

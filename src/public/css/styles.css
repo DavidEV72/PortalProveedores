@@ -1,0 +1,66 @@
+
+.index {
+    width: 100vw;
+    height: 100vh;
+}
+
+.navbar {
+    background: black !important;
+}
+
+.nav-link {
+    color: #fff !important;
+}
+
+.masthead {
+    color: #F07E29;
+    min-height: 30rem;
+    width: 100%;
+    height: 100%;
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+    background: url('/img/portal-proveedores.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.masthead h1 {
+    font-size: 4rem;
+    margin: 0;
+    padding: 0;
+  }
+  
+  @media (min-width: 992px) {
+    .masthead {
+      height: 100vh;
+    }
+    .masthead h1 {
+      font-size: 5.5rem;
+    }
+  }
+  .btn-bd-primary{
+    font-weight: 600;
+    color: #fff;
+    background-color: #F05A22;
+    border-color: #F05A22;
+}
+.btn-bd-primary:hover,.btn-bd-primary:active{
+    color: #fff;
+    background-color:  rgb(198, 81, 36);
+    border-color:  rgb(198, 81, 36);
+}
+.btn-bd-primary:focus{
+    box-shadow: 0 0 0 3px rgba(121, 82, 179, 0.25);
+}
+a{
+  color: #F07E29;
+}
+
+a:hover{
+  color: #F05A22;
+}
+
+a:active{
+  color: rgb(198, 81, 36);
+}
