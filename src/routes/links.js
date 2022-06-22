@@ -1,7 +1,21 @@
 const express = require('express')
 const router = express.Router()
+const multer = require('multer')
+const mimeTypes = require('mime-types')
+const path = require('path')
 
 const pool = require('../database');
+
+const storage=multer.diskStorage({
+    destination:'uploads/',
+    filename:function(req,file,cb){
+        cb("",Date.now() + file.originalname)
+    }
+})
+
+const upload = multer({
+    storage:storage
+})
 
 const { isLoggedIn } = require('../lib/auth');
 
@@ -9,7 +23,7 @@ router.get('/add', isLoggedIn, (req, res) => {
     res.render('links/add');
 });
 
-router.post('/add', isLoggedIn, async (req, res) => {
+router.post('/add', upload.single('archivo'), isLoggedIn, async (req, res) => {
     const { empresa, rubro, fecha, domicilio, RFC, descripcion } = req.body;
     const newLink = {
         empresa,
@@ -18,6 +32,7 @@ router.post('/add', isLoggedIn, async (req, res) => {
         domicilio,
         RFC,
         descripcion,
+        PathImage:req.file.path,
         user_id: req.user.id
     };
     await pool.query('INSERT INTO proveedor set ?', [newLink]);

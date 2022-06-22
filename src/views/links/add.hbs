@@ -4,7 +4,7 @@
 
             <div class="card">
                 <div class="card-body">
-                    <form action="/links/add" method="POST">
+                    <form action="/links/add" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
                             <input type="text" name="empresa" class="form-control" placeholder="Empresa" autofocus>
                         </div>
@@ -22,6 +22,9 @@
                         </div>
                         <div class="form-group">
                             <textarea name="descripcion" rows="2" class="form-control" placeholder="Descripcion"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <input type="file" name="archivo" class="form-control">
                         </div>
                         <div class="form-group">
                             <button class="btn btn-bd-primary btn-block">
