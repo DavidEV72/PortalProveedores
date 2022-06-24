@@ -24,15 +24,19 @@ router.get('/add', isLoggedIn, (req, res) => {
 });
 
 router.post('/add', upload.single('archivo'), isLoggedIn, async (req, res) => {
-    const { empresa, rubro, fecha, domicilio, RFC, descripcion } = req.body;
+    const { empresa, giro, fecha, domicilio, RFC, descripcion, telefono, correo, postal } = req.body;
     const newLink = {
         empresa,
-        rubro,
+        giro,
         fecha,
         domicilio,
         RFC,
         descripcion,
+        telefono,
+        correo,
+        postal,
         PathImage:req.file.path,
+        bandera:"nuevo",
         user_id: req.user.id
     };
     await pool.query('INSERT INTO proveedor set ?', [newLink]);
@@ -61,14 +65,17 @@ router.get('/edit/:id', async (req, res) => {
 
 router.post('/edit/:id', async (req, res) => {
     const { id } = req.params;
-    const { empresa, rubro, fecha, domicilio, RFC, descripcion } = req.body;
+    const { empresa, giro, fecha, domicilio, RFC, descripcion, telefono, correo, postal } = req.body;
     const newLink = {
         empresa,
-        rubro,
+        giro,
         fecha,
         domicilio,
         RFC,
-        descripcion
+        descripcion,
+        telefono,
+        correo,
+        postal
     };
     await pool.query('UPDATE proveedor set ? WHERE id = ?', [newLink, id]);
     req.flash('success', 'Registro actualizado satisfactoriamente');
@@ -80,6 +87,9 @@ router.get('/details/:id', async (req, res) => {
     const links = await pool.query('SELECT * FROM proveedor WHERE id = ?', [id]);
     console.log(links);
     res.render('links/details', { link: links[0] });
+    
 });
+
+
 
 module.exports = router

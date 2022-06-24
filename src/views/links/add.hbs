@@ -1,46 +1,111 @@
-<div class="container p-4">
-    <div class="row">
-        <div class="col-md-6 mx-auto">
-
-            <div class="card">
-                <div class="card-body">
-                    <form action="/links/add" method="POST" enctype="multipart/form-data">
-                        <div class="form-group">
-                            <input type="text" name="empresa" class="form-control" placeholder="Empresa" autofocus>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" name="rubro" class="form-control" placeholder="Rubro" autofocus>
-                        </div>
-                        <div class="form-group">
-                            <input type="date" name="fecha" class="form-control" placeholder="Fecha" autofocus>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" name="domicilio" class="form-control" placeholder="Domicilio" autofocus>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" name="RFC" class="form-control" placeholder="RFC" autofocus>
-                        </div>
-                        <div class="form-group">
-                            <textarea name="descripcion" rows="2" class="form-control" placeholder="Descripcion"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <input type="file" name="archivo" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <button class="btn btn-bd-primary btn-block">
-                                Guardar
+<!-- MultiStep Form -->
+<div class="container-fluid" id="grad1">
+    <div class="row justify-content-center mt-0">
+        <div class="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-3 mb-2">
+            <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+                <h2><strong>Agregar Registro de nuevo Proveedor</strong></h2>
+                <p>Ingrese los datos solicitados</p>
+                <div class="row">
+                    <div class="col-md-12 mx-0">
+                        <form id="msform" action="/links/add" method="POST" enctype="multipart/form-data">
+                            <!-- progressbar -->
+                            <ul id="progressbar">
+                                <li class="active" id="account"><strong>Datos</strong></li>
+                                <li id="personal"><strong>Contacto</strong></li>
+                                <li id="payment"><strong>Archivos</strong></li>
+                                <li id="confirm"><strong>Registrado</strong></li>
+                            </ul>
+                            <!-- fieldsets -->
+                            <fieldset>
+                                <div class="form-card main active">
+                                    <h2 class="fs-title">Información del Proveedor</h2>
+                                    <label>Nombre de la Empresa*</label>
+                                    <input type="text" name="empresa" class="form-control" placeholder="Empresa" require autofocus>
+                                    <label>Cual es su giro*</label>
+                                    <input type="text" name="giro" class="form-control" placeholder="Giro" require autofocus>
+                                    <label>Fecha de registro*</label>
+                                    <input type="date" name="fecha" class="form-control" placeholder="Fecha" require autofocus>
+                                    <label>cual es su RFC*</label>
+                                    <input type="text" name="RFC" class="form-control" placeholder="RFC" maxlength="13" require autofocus>
+                                    <label>Describe brevemente la empresa</label>
+                                    <textarea name="descripcion" rows="2" class="form-control" placeholder="Descripcion"></textarea>
+                                </div>
+                                <a class="previous action-button-previous" href="/links/">
+                                    Regresar
+                                 </a>
+                                <input type="button" name="next" class="next action-button" value="Siguiente"/>
+                            </fieldset>
+                            <fieldset>
+                                <div class="form-card main">
+                                    <h2 class="fs-title">Contacto al Proveedor</h2>
+                                    <label>Ingresa un numero de telefono*</label>
+                                    <input type="number" name="telefono" class="form-control" placeholder="0000000000" maxlength="10" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" require autofocus>
+                                    <label>Correo Electrónico*</label>
+                                    <input type="email" name="correo" class="form-control" placeholder="email@ejemplo.com" require autofocus>
+                                    <label>Codigo Postal*</label>
+                                    <input type="number" name="postal" class="form-control" placeholder="00000" maxlength="5" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" require autofocus>
+                                    <label>Domicilio*</label>
+                                    <input type="text" name="domicilio" class="form-control" placeholder="Domicilio" require autofocus>
+                                    
+                                </div>
+                                <input type="button" name="previous" class="previous action-button-previous" value="Regresar"/>
+                                <input type="button" name="next" class="next action-button" value="Siguiente"/>
+                            </fieldset>
+                            <fieldset>
+                                <div class="form-card main">
+                                    <h2 class="fs-title">Cargar Archivos</h2>
+                                   <label>Cargar archivo en formato .png, .jpg, .jpeg y .pdf</label>
+                                   <main class="main_full">
+	<div class="container">
+		<div class="panel">
+			<div class="button_outer">
+				<div class="btn_upload">
+					<input type="file" id="upload_file" name="archivo">
+					Cargar Archivo
+				</div>
+				<div class="processing_bar"></div>
+				<div class="success_box"></div>
+			</div>
+		</div>
+		<div class="error_msg"></div>
+		<div class="uploaded_file_view" id="uploaded_view">
+			<span class="file_remove">X</span>
+		</div>
+	</div>
+</main>
+                                   
+                                </div>
+                                <input type="button" name="previous" class="previous action-button-previous" value="Regresar"/>
+                                <input type="button" name="make_payment" class="next action-button" value="Confirmar"/>
+                            </fieldset>
+                            <fieldset>
+                                <div class="form-card main">
+                                    <h2 class="fs-title text-center">Guardado Exito</h2>
+                                    <br><br>
+                                    <div class="row justify-content-center">
+                                        <div class="col-3">
+                                            <img src="https://img.icons8.com/color/96/000000/ok--v2.png" class="fit-image">
+                                        </div>
+                                    </div>
+                                    <br><br>
+                                    
+                                    <div class="row justify-content-center">
+                                        <div class="col-7 text-center">
+                                            <h5>Se ha registrado exitosamente el proveedor</h5>
+                                        </div>
+                                    </div>
+                                   
+                           
+                        
+                                </div>
+                                 <button class="next action-button">
+                                Regresar
                             </button>
-                        </div>
-                         <div class="form-group">
-                    <a class="btn btn-bd-primary btn-block" href="/profile/">
-                        Regresar
-                    </a>
-                    
-                </div>
-                    </form>
+                            </fieldset>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-
     </div>
 </div>

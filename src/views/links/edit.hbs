@@ -4,21 +4,39 @@
         <div class="card-body">
             <form action="/links/edit/{{link.id}}" method="POST">
                 <div class="form-group">
+                    <label>Empresa</label>
                     <input type="text" name="empresa" class="form-control" placeholder="Empresa" value="{{link.empresa}}" autofocus>
                 </div>
                  <div class="form-group">
-                    <input type="text" name="rubro" class="form-control" placeholder="Rubro" value="{{link.rubro}}" autofocus>
+                    <label>Rubro</label>
+                    <input type="text" name="rubro" class="form-control" placeholder="Rubro" value="{{link.giro}}" autofocus>
                 </div>
                  <div class="form-group">
+                    <label>Fecha</label>
                     <input type="date" name="fecha" class="form-control" value="{{link.fecha}}" >
                 </div>
                  <div class="form-group">
+                    <label>Codigo Postal</label>
+                    <input type="text" name="postal" class="form-control" placeholder="Codigo Postal" value="{{link.postal}}" autofocus>
+                </div>
+                 <div class="form-group">
+                    <label>Domicilio</label>
                     <input type="text" name="domicilio" class="form-control" placeholder="Domicilio" value="{{link.domicilio}}" autofocus>
                 </div>
                  <div class="form-group">
+                    <label>RFC</label>
                     <input type="text" name="RFC" class="form-control" placeholder="RFC" value="{{link.RFC}}" autofocus>
                 </div>
                 <div class="form-group">
+                    <label>Telefono</label>
+                    <input type="text" name="telefono" class="form-control" placeholder="telefono" value="{{link.telefono}}" autofocus>
+                </div>
+                 <div class="form-group">
+                    <label>Correo</label>
+                    <input type="text" name="correo" class="form-control" placeholder="Correo" value="{{link.correo}}" autofocus>
+                </div>
+                <div class="form-group">
+                    <label>Descripcion</label>
                     <textarea name="descripcion" rows="2" class="form-control" placeholder="Descripcion">{{link.descripcion}}</textarea>
                 </div>
                 <div class="form-group">
