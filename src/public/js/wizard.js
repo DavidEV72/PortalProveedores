@@ -119,7 +119,7 @@ $(document).ready(function(){
 			},3000);
 			var uploadedFile = URL.createObjectURL(e.target.files[0]);
 			setTimeout(function(){
-                if(ext,['.pdf']){
+                if(ext=='pdf'){
                     $("#uploaded_view").append('<img src="/img/pdf-icon.png" />').addClass("show");
                 }
                 else{
